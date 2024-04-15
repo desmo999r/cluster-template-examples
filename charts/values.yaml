@@ -1,7 +1,7 @@
 # cluster specific values
 cluster:
   # specify cluster name
-  name: template-rke2
+  name: dcs-rke2
 
   # specify cluster labels
   labels: {}
@@ -10,12 +10,19 @@ cluster:
   annotations: {}
 
 # specify cloud credential secret name, do not need to be provided if using custom driver
-cloudCredentialSecretName: ""
+cloudCredentialSecretName: "cattle-global-data:cc-fw7mm"
 
 # specify cloud provider, options are amazonec2, digitalocean, azure, vsphere or custom
-cloudprovider: "digitalocean"
+cloudprovider: "harvester"
 
-kubernetesVersion: ""
+kubernetesVersion: "v1.27.12+rke2r1"
+
+nodepools:
+  - name: test
+    diskSize: 16Gi
+    cpuCount: 4
+    memorySize: 8Gi
+    imageName: bionic-server-cloudimg-amd64.img
 
 # general RKE options
 rke:
